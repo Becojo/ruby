@@ -899,7 +899,7 @@ class ERB
   # code evaluation.
   #
   def result(b=new_toplevel)
-    unless @_init.equal?(self.class.singleton_class)
+    unless self.class.singleton_class.equal?(@_init)
       raise ArgumentError, "not initialized"
     end
     eval(@src, b, (@filename || '(erb)'), @lineno)
